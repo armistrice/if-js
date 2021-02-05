@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 // Переменные
 let user = 'John Doe';
 console.log(user);
