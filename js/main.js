@@ -11,7 +11,7 @@ test += 1;
 test += '1';
 console.log(test);// 21;
 test -= 1;
-console.log(test);// 2
+console.log(test);// 20
 console.log(!!test); // false
 // Массивы
 const arr = [2, 3, 5, 8];
@@ -30,7 +30,7 @@ const arr3 = [2, 5, 8, 15, 0, 6, 20, 3];
 let z = 0;
 for (let i = 0; i < arr3.length; i += 1) {
   z = arr3[i] % 2;
-  if (z === 0 && arr3[i] !== 0) {
+  if (z === 0) {
     console.log(arr3[i]);
   }
 }
