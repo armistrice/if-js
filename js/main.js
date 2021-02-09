@@ -1,36 +1,52 @@
-// Переменные
-let user = 'John Doe';
-console.log(user);
-const student = 'Egor Leineveber';
-console.log(student);
-user = student;
-console.log(user); // Egor Leineveber
-// Примитивы
-let test = 1;
-test += 1;
-test += '1';
-console.log(test);// 21;
-test -= 1;
-console.log(test);// 20
-console.log(!!test); // false
-// Массивы
-const arr = [2, 3, 5, 8];
-let result = 1;
-for (let i = 0; i < arr.length; i += 1) {
-  result *= arr[i];
+// Функция palindrome
+function palindrome(word) {
+  for (let i = 0; i < word.length / 2; i += 1) {
+    if (word[i] === word[word.length - 1 - i]) {
+      return true;
+    }
+  }
+  return false;
 }
-console.log(result);
-const arr2 = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < arr2.length; i += 1) {
-  if (arr2[i] > 5 && arr2[i] < 10) {
-    console.log(arr2[i]);
+
+palindrome('радар');
+
+// Функции min и max
+function min(a, b) {
+  if (a > b) {
+    return b;
+  }
+  return a;
+}
+
+min(32, 64);
+
+function max(a, b) {
+  if (a < b) {
+    return a;
+  }
+  return b;
+}
+
+max(11, 2);
+
+// Через тернарный оператор
+
+function minTernary(a, b) {
+  // eslint-disable-next-line no-unused-expressions
+  a > b ? console.log(b) : console.log(a);
+}
+
+minTernary(10, 20);
+
+// Замена элементов массива
+let result = 0;
+function zamena(arr) {
+  for (let i = 0; i < arr.length; i += 1) {
+    result = arr[i] % 10;
+    if (result === 0) {
+      console.log(arr[i].replace(0, 'zero'));
+    }
   }
 }
-const arr3 = [2, 5, 8, 15, 0, 6, 20, 3];
-let z = 0;
-for (let i = 0; i < arr3.length; i += 1) {
-  z = arr3[i] % 2;
-  if (z === 0) {
-    console.log(arr3[i]);
-  }
-}
+
+zamena([40, 11, 20, 23, 30, 56, 42, 63, 32, 100]);
