@@ -8,7 +8,7 @@ function palindrome(word) {
   return false;
 }
 
-palindrome('радар');
+console.log(palindrome('радар'), '- слово является палиндромом');
 
 // Функции min и max
 function min(a, b) {
@@ -18,35 +18,40 @@ function min(a, b) {
   return a;
 }
 
-min(32, 64);
+console.log(min(32, 64), '- меньшее из чисел');
 
 function max(a, b) {
-  if (a < b) {
+  if (a > b) {
     return a;
   }
   return b;
 }
 
-max(11, 2);
+console.log(max(11, 2), '- большее из чисел');
 
 // Через тернарный оператор
 
 function minTernary(a, b) {
-  // eslint-disable-next-line no-unused-expressions
-  a > b ? console.log(b) : console.log(a);
+  const result = a > b ? b : a;
+  console.log(result, '- меньшее из чисел (тернарный оператор)');
 }
 
 minTernary(10, 20);
 
 // Замена элементов массива
-let result = 0;
-function zamena(arr) {
-  for (let i = 0; i < arr.length; i += 1) {
-    result = arr[i] % 10;
-    if (result === 0) {
-      console.log(arr[i].replace(0, 'zero'));
+
+const array = [0, 10, 20, 34, 40, 55, 60, 70, 87, 90, 100];
+function replaceZero() {
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i] === 0) {
+      array[i] = 'zero';
+    } else if (array[i] % 100 === 0) {
+      array[i] = `${array[i] / 100}zerozero`;
+    } else if (array[i] % 10 === 0) {
+      array[i] = `${array[i] / 10}zero`;
     }
   }
+  return array;
 }
 
-zamena([40, 11, 20, 23, 30, 56, 42, 63, 32, 100]);
+console.log(replaceZero(array));
