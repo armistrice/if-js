@@ -1,14 +1,14 @@
 // Функция palindrome
 function palindrome(word) {
   for (let i = 0; i < word.length / 2; i += 1) {
-    if (word[i] === word[word.length - 1 - i]) {
-      return true;
+    if (word[i] !== word[word.length - 1 - i]) {
+      return false;
     }
   }
-  return false;
+  return true;
 }
 
-console.log(palindrome('радар'), '- слово является палиндромом');
+console.log(palindrome('шалаш'));
 
 // Функции min и max
 function min(a, b) {
