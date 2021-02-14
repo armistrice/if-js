@@ -1,13 +1,3 @@
-function sum(a) {
-  return function (b) {
-    return a + b;
-  };
-}
-
-console.log(sum(5)(2));
-
-module.exports = sum;
-
 const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const para1 = document.getElementById('text1');
 const para2 = document.getElementById('text2');
