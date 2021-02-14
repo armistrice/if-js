@@ -1,57 +1,56 @@
-// Функция palindrome
-function palindrome(word) {
-  for (let i = 0; i < word.length / 2; i += 1) {
-    if (word[i] !== word[word.length - 1 - i]) {
-      return false;
-    }
+function sum(a) {
+  return function (b) {
+    return a + b;
+  };
+}
+
+console.log(sum(5)(2));
+
+module.exports = sum;
+
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+const para1 = document.getElementById('text1');
+const para2 = document.getElementById('text2');
+const para3 = document.getElementById('text3');
+
+/* Я пытался все сделать так, чтобы не нужно было повторять один и тот же
+код  раза, но так, чтобы они работали независимо - не вышло. */
+
+let clicks1 = 0;
+
+function colorChange1() {
+  clicks1 += 1;
+  para1.style.color = colors[clicks1 - 1];
+  if (clicks1 > colors.length) {
+    clicks1 = 0;
+    para1.style.color = 'black';
   }
-  return true;
 }
 
-console.log(palindrome('шалаш'));
+para1.addEventListener('click', colorChange1);
 
-// Функции min и max
-function min(a, b) {
-  if (a > b) {
-    return b;
+let clicks2 = 0;
+
+function colorChange2() {
+  clicks2 += 1;
+  para2.style.color = colors[clicks2 - 1];
+  if (clicks2 > colors.length) {
+    clicks2 = 0;
+    para2.style.color = 'black';
   }
-  return a;
 }
 
-console.log(min(32, 64), '- меньшее из чисел');
+para2.addEventListener('click', colorChange2);
 
-function max(a, b) {
-  if (a > b) {
-    return a;
+let clicks3 = 0;
+
+function colorChange3() {
+  clicks3 += 1;
+  para3.style.color = colors[clicks3 - 1];
+  if (clicks3 > colors.length) {
+    clicks3 = 0;
+    para3.style.color = 'black';
   }
-  return b;
 }
 
-console.log(max(11, 2), '- большее из чисел');
-
-// Через тернарный оператор
-
-function minTernary(a, b) {
-  const result = a > b ? b : a;
-  console.log(result, '- меньшее из чисел (тернарный оператор)');
-}
-
-minTernary(10, 20);
-
-// Замена элементов массива
-
-const array = [0, 10, 20, 34, 40, 55, 60, 70, 87, 90, 100];
-function replaceZero() {
-  for (let i = 0; i < array.length; i += 1) {
-    if (array[i] === 0) {
-      array[i] = 'zero';
-    } else if (array[i] % 100 === 0) {
-      array[i] = `${array[i] / 100}zerozero`;
-    } else if (array[i] % 10 === 0) {
-      array[i] = `${array[i] / 10}zero`;
-    }
-  }
-  return array;
-}
-
-console.log(replaceZero(array));
+para3.addEventListener('click', colorChange3);
