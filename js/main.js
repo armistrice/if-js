@@ -69,8 +69,8 @@ console.log(max(11, 2), '- большее из чисел');
 // Через тернарный оператор
 
 function minTernary(a, b) {
-  const result = a > b ? b : a;
-  console.log(result, '- меньшее из чисел (тернарный оператор)');
+  const resultTernary = a > b ? b : a;
+  console.log(resultTernary, '- меньшее из чисел (тернарный оператор)');
 }
 
 minTernary(10, 20);
@@ -113,3 +113,70 @@ function colorChange(parameter) {
 para1.addEventListener('click', colorChange(para1));
 para2.addEventListener('click', colorChange(para2));
 para3.addEventListener('click', colorChange(para3));
+
+function dateReplace(date) {
+  const dateReplaced = date.slice(8) + date.slice(4, 8) + date.slice(0, 4);
+  const dateWithDots = dateReplaced.replace(/-/g, '.');
+  console.log(dateWithDots);
+}
+
+dateReplace('2020-11-26');
+
+const data = [
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold',
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine',
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship',
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA',
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel',
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
+];
+
+function searchString(searchWord) {
+  let foundString;
+  for (let i = 0; i < data.length; i += 1) {
+    if (data[i].country.includes(searchWord) || data[i].city.includes(searchWord)
+     || data[i].hotel.includes(searchWord)) {
+      foundString = `${data[i].country}, ${data[i].city}, ${data[i].hotel}`;
+      console.log(foundString);
+    }
+  }
+}
+
+searchString('Germany');
+
+module.exports = dateReplace;
+module.exports = searchString;
