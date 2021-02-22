@@ -1,11 +1,12 @@
-// Переменные
+console.log('Lesson-2'); // LESSON - 2
+
 let user = 'John Doe';
 console.log(user);
 const student = 'Egor Leineveber';
 console.log(student);
 user = student;
 console.log(user); // Egor Leineveber
-// Примитивы
+
 let test = 1;
 test += 1;
 test += '1';
@@ -13,7 +14,7 @@ console.log(test);// 21;
 test -= 1;
 console.log(test);// 20
 console.log(!!test); // false
-// Массивы
+
 const arr = [2, 3, 5, 8];
 let result = 1;
 for (let i = 0; i < arr.length; i += 1) {
@@ -35,7 +36,8 @@ for (let i = 0; i < arr3.length; i += 1) {
   }
 }
 
-// Функция palindrome
+console.log('Lesson-3'); // LESSON - 3
+
 function palindrome(word) {
   for (let i = 0; i < word.length / 2; i += 1) {
     if (word[i] !== word[word.length - 1 - i]) {
@@ -93,6 +95,8 @@ function replaceZero() {
 
 console.log(replaceZero(array));
 
+console.log('Lesson-4'); // LESSON - 4
+
 const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 const para1 = document.getElementById('text1');
 const para2 = document.getElementById('text2');
@@ -113,6 +117,8 @@ function colorChange(parameter) {
 para1.addEventListener('click', colorChange(para1));
 para2.addEventListener('click', colorChange(para2));
 para3.addEventListener('click', colorChange(para3));
+
+console.log('Lesson-5'); // LESSON - 5
 
 function dateReplace(date) {
   const dateReplaced = date.slice(8) + date.slice(4, 8) + date.slice(0, 4);
@@ -165,18 +171,209 @@ const data = [
   },
 ];
 
-function searchString(searchWord) {
-  let foundString;
+function searchData(searchWord) {
+  const searchWordToLowerCase = searchWord.toLowerCase();
   for (let i = 0; i < data.length; i += 1) {
-    if (data[i].country.includes(searchWord) || data[i].city.includes(searchWord)
-     || data[i].hotel.includes(searchWord)) {
-      foundString = `${data[i].country}, ${data[i].city}, ${data[i].hotel}`;
-      console.log(foundString);
+    const searchLineToLowerCase = data[i].country.toLowerCase()
+      + data[i].city.toLowerCase() + data[i].hotel.toLowerCase();
+    if (searchLineToLowerCase.includes(searchWordToLowerCase)) {
+      console.log(`${data[i].country}, ${data[i].city}, ${data[i].hotel}`);
     }
   }
 }
 
-searchString('Germany');
+searchData('germany');
 
-module.exports = dateReplace;
-module.exports = searchString;
+console.clear();
+
+console.log('Lesson-6'); // LESSON - 6
+
+const wordPalindrome = 'шалаш';
+const reverseWordPalindrome = wordPalindrome.split().reverse().join();
+console.log(wordPalindrome === reverseWordPalindrome);
+
+const hotels = [
+  {
+    name: 'Hotel Leopold',
+    city: 'Saint Petersburg',
+    country: 'Russia',
+  },
+  {
+    name: 'Apartment Sunshine',
+    city: 'Santa Cruz de Tenerife',
+    country: 'Spain',
+  },
+  {
+    name: 'Villa Kunerad',
+    city: 'Vysokie Tatry',
+    country: 'Slowakia',
+  },
+  {
+    name: 'Hostel Friendship',
+    city: 'Berlin',
+    country: 'Germany',
+  },
+  {
+    name: 'Radisson Blu Hotel',
+    city: 'Kyiv',
+    country: 'Ukraine',
+  },
+  {
+    name: 'Paradise Hotel',
+    city: 'Guadalupe',
+    country: 'Mexico',
+  },
+  {
+    name: 'Hotel Grindewald',
+    city: 'Interlaken',
+    country: 'Switzerland',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Virgin Hotel',
+    city: 'Chicago',
+    country: 'USA',
+  },
+  {
+    name: 'Grand Beach Resort',
+    city: 'Dubai',
+    country: 'United Arab Emirates',
+  },
+  {
+    name: 'Shilla Stay',
+    city: 'Seoul',
+    country: 'South Korea',
+  },
+  {
+    name: 'San Firenze Suites',
+    city: 'Florence',
+    country: 'Italy',
+  },
+  {
+    name: 'The Andaman Resort',
+    city: 'Port Dickson',
+    country: 'Malaysia',
+  },
+  {
+    name: 'Black Penny Villas',
+    city: 'BTDC, Nuca Dua',
+    country: 'Indonesia',
+  },
+  {
+    name: 'Koko Hotel',
+    city: 'Tokyo',
+    country: 'Japan',
+  },
+  {
+    name: 'Ramada Plaza',
+    city: 'Istanbul',
+    country: 'Turkey',
+  },
+  {
+    name: 'Waikiki Resort Hotel',
+    city: 'Hawaii',
+    country: 'USA',
+  },
+  {
+    name: 'Puro Hotel',
+    city: 'Krakow',
+    country: 'Poland',
+  },
+  {
+    name: 'Asma Suites',
+    city: 'Santorini',
+    country: 'Greece',
+  },
+  {
+    name: 'Cityden Apartments',
+    city: 'Amsterdam',
+    country: 'Netherlands',
+  },
+  {
+    name: 'Mandarin Oriental',
+    city: 'Miami',
+    country: 'USA',
+  },
+  {
+    name: 'Concept Terrace Hotel',
+    city: 'Rome',
+    country: 'Italy',
+  },
+  {
+    name: 'Ponta Mar Hotel',
+    city: 'Fortaleza',
+    country: 'Brazil',
+  },
+  {
+    name: 'Four Seasons Hotel',
+    city: 'Sydney',
+    country: 'Australia',
+  },
+  {
+    name: 'Le Meridien',
+    city: 'Nice',
+    country: 'France',
+  },
+  {
+    name: 'Apart Neptun',
+    city: 'Gdansk',
+    country: 'Poland',
+  },
+  {
+    name: 'Lux Isla',
+    city: 'Ibiza',
+    country: 'Spain',
+  },
+  {
+    name: 'Nox Hostel',
+    city: 'London',
+    country: 'UK',
+  },
+  {
+    name: 'Leonardo Vienna',
+    city: 'Vienna',
+    country: 'Austria',
+  },
+  {
+    name: 'Adagio Aparthotel',
+    city: 'Edinburgh',
+    country: 'UK',
+  },
+  {
+    name: 'Steigenberger Hotel',
+    city: 'Hamburg',
+    country: 'Germany',
+  },
+];
+
+function searchHotels(searchWord) {
+  const searchWordToLowerCase = searchWord.toLowerCase();
+  hotels.forEach((element) => {
+    const searchLineToLowerCase = element.name.toLowerCase() + element.city.toLowerCase()
+      + element.country.toLowerCase();
+    if (searchLineToLowerCase.includes(searchWordToLowerCase)) {
+      console.log(`${element.country}, ${element.city}, ${element.name}`);
+    }
+  });
+}
+
+searchHotels('south');
+
+function searchCountry() {
+  return hotels.reduce((accumulator, currentValue) => {
+    const resultSearch = [];
+    if (!accumulator[currentValue.country]) {
+      resultSearch.push(currentValue.city);
+      accumulator[currentValue.country] = resultSearch;
+    } else if (!accumulator[currentValue.country].includes(currentValue.city)) {
+      accumulator[currentValue.country].push(currentValue.city);
+    }
+    return accumulator;
+  }, {});
+}
+
+console.log(searchCountry());
