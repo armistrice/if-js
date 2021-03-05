@@ -184,8 +184,6 @@ function searchData(searchWord) {
 
 searchData('germany');
 
-console.clear();
-
 console.log('Lesson-6'); // LESSON - 6
 
 const wordPalindrome = 'шалаш';
@@ -377,3 +375,70 @@ function searchCountry() {
 }
 
 console.log(searchCountry());
+
+console.clear();
+
+console.log('Lesson-7'); // LESSON - 7
+
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
+
+function deepEqual(firstObj, secondObj) {
+  const firstObjKeys = Object.keys(firstObj);
+  const secondObjKeys = Object.keys(secondObj);
+
+  if ((firstObj !== Object(firstObj)) && (secondObj !== Object(secondObj))) {
+    return firstObj === secondObj;
+  }
+
+  if (firstObjKeys.length !== secondObjKeys.length) {
+    return false;
+  }
+
+  for (let i = 0; i < firstObjKeys.length; i += 1) {
+    if (!Object.prototype.hasOwnProperty.call(secondObj, firstObjKeys[i])) {
+      return false;
+    }
+  }
+
+  for (const key in firstObj) {
+    if (!deepEqual(firstObj[key], secondObj[key])) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));

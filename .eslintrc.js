@@ -10,5 +10,8 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    'max-classes-per-file': ['error', 10],
+    'no-underscore-dangle': 'off',
+    'no-restricted-syntax': ['error', "BinaryExpression[operator='in']"],
   },
 };
