@@ -376,8 +376,6 @@ function searchCountry() {
 
 console.log(searchCountry());
 
-console.clear();
-
 console.log('Lesson-7'); // LESSON - 7
 
 const obj1 = {
@@ -442,3 +440,93 @@ function deepEqual(firstObj, secondObj) {
 
 console.log(deepEqual(obj1, obj2));
 console.log(deepEqual(obj1, obj3));
+
+console.clear();
+
+console.log('Lesson-8'); // LESSON - 8
+
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  },
+];
+
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  get _fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+class Student extends User {
+  constructor(firstName, lastName, admissionYear, courseName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+
+  _course() {
+    switch (this.admissionYear) {
+      case 2017:
+        return '4 курс';
+      case 2018:
+        return '3 курс';
+      case 2019:
+        return '2 курс';
+      case 2020:
+        return '1 курс';
+      case 2021:
+        return 'только поступил';
+      default:
+        return 'не обучается или уже закончил обучение';
+    }
+  }
+}
+
+class Students {
+  constructor(students) {
+    this.students = students;
+  }
+
+  getInfo() {
+    const resultStudents = [];
+
+    this.students.forEach((elem) => {
+      const studentFromArray = new Student(
+        elem.firstName, elem.lastName, elem.admissionYear, elem.courseName,
+      );
+
+      resultStudents.push((`${studentFromArray.firstName} ${studentFromArray.lastName} - ${studentFromArray.courseName}, ${studentFromArray._course()}`));
+    });
+
+    return resultStudents.sort((a, b) => a - b);
+  }
+}
+
+const showStudentsList = new Students(studentsData);
+console.log(showStudentsList.getInfo());
