@@ -524,9 +524,11 @@ class Students {
       resultStudents.push((`${studentFromArray.firstName} ${studentFromArray.lastName} - ${studentFromArray.courseName}, ${studentFromArray._course()}`));
     });
 
-    return resultStudents.sort((a, b) => a - b);
+    return resultStudents;
   }
 }
 
-const showStudentsList = new Students(studentsData);
+const showStudentsList = new Students(
+  studentsData.sort((a, b) => b.admissionYear - a.admissionYear),
+);
 console.log(showStudentsList.getInfo());
