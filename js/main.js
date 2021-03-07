@@ -97,26 +97,26 @@ console.log(replaceZero(array));
 
 console.log('Lesson-4'); // LESSON - 4
 
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-const para1 = document.getElementById('text1');
-const para2 = document.getElementById('text2');
-const para3 = document.getElementById('text3');
+// const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+// const para1 = document.getElementById('text1');
+// const para2 = document.getElementById('text2');
+// const para3 = document.getElementById('text3');
 
-function colorChange(parameter) {
-  let clicks = 0;
-  return function () {
-    clicks += 1;
-    const paragraph = parameter;
-    paragraph.style.color = colors[clicks - 1];
-    if (clicks > colors.length - 1) {
-      clicks = 0;
-    }
-  };
-}
+// function colorChange(parameter) {
+//   let clicks = 0;
+//   return function () {
+//     clicks += 1;
+//     const paragraph = parameter;
+//     paragraph.style.color = colors[clicks - 1];
+//     if (clicks > colors.length - 1) {
+//       clicks = 0;
+//     }
+//   };
+// }
 
-para1.addEventListener('click', colorChange(para1));
-para2.addEventListener('click', colorChange(para2));
-para3.addEventListener('click', colorChange(para3));
+// para1.addEventListener('click', colorChange(para1));
+// para2.addEventListener('click', colorChange(para2));
+// para3.addEventListener('click', colorChange(para3));
 
 console.log('Lesson-5'); // LESSON - 5
 
@@ -441,8 +441,6 @@ function deepEqual(firstObj, secondObj) {
 console.log(deepEqual(obj1, obj2));
 console.log(deepEqual(obj1, obj3));
 
-console.clear();
-
 console.log('Lesson-8'); // LESSON - 8
 
 const studentsData = [
@@ -532,3 +530,46 @@ const showStudentsList = new Students(
   studentsData.sort((a, b) => b.admissionYear - a.admissionYear),
 );
 console.log(showStudentsList.getInfo());
+
+console.clear();
+
+console.log('Lesson-9'); // LESSON - 9
+
+const dataColors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  [Symbol.iterator]() {
+    return this;
+  },
+  next() {
+    if (this.current === undefined) {
+      this.current = 0;
+    }
+
+    if (this.current < this.data.length) {
+      return {
+        done: false,
+        value: this.data[this.current++],
+      };
+    }
+    if (this.current === this.data.length) {
+      this.current = 0;
+      return this.next();
+    }
+    return {
+      done: true,
+    };
+  },
+};
+
+const para1 = document.getElementById('text1');
+const para2 = document.getElementById('text2');
+const para3 = document.getElementById('text3');
+
+const changeStyle = (id) => (event) => {
+  const param = event;
+  param.target.style.color = dataColors.next(id).value;
+};
+
+para1.addEventListener('click', changeStyle(para1));
+para2.addEventListener('click', changeStyle(para2));
+para3.addEventListener('click', changeStyle(para3));
