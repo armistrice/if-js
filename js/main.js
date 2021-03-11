@@ -580,7 +580,7 @@ const pSecond = getElement('text2');
 const pThird = getElement('text3');
 
 function addListener(element, eventType, func) {
-  element.addEventListener(eventType, func);
+  return element.addEventListener(eventType, func);
 }
 
 addListener(pFirst, 'click', changeStyle(dataColors));
