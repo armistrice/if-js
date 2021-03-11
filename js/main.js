@@ -97,26 +97,26 @@ console.log(replaceZero(array));
 
 console.log('Lesson-4'); // LESSON - 4
 
-// const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-// const para1 = document.getElementById('text1');
-// const para2 = document.getElementById('text2');
-// const para3 = document.getElementById('text3');
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+const para1 = document.getElementById('text1broke');
+const para2 = document.getElementById('text2broke');
+const para3 = document.getElementById('text3broke');
 
-// function colorChange(parameter) {
-//   let clicks = 0;
-//   return function () {
-//     clicks += 1;
-//     const paragraph = parameter;
-//     paragraph.style.color = colors[clicks - 1];
-//     if (clicks > colors.length - 1) {
-//       clicks = 0;
-//     }
-//   };
-// }
+function colorChange(parameter) {
+  let clicks = 0;
+  return function () {
+    clicks += 1;
+    const paragraph = parameter;
+    paragraph.style.color = colors[clicks - 1];
+    if (clicks > colors.length - 1) {
+      clicks = 0;
+    }
+  };
+}
 
-// para1.addEventListener('click', colorChange(para1));
-// para2.addEventListener('click', colorChange(para2));
-// para3.addEventListener('click', colorChange(para3));
+para1.addEventListener('click', colorChange(para1));
+para2.addEventListener('click', colorChange(para2));
+para3.addEventListener('click', colorChange(para3));
 
 console.log('Lesson-5'); // LESSON - 5
 
@@ -561,15 +561,15 @@ const dataColors = {
   },
 };
 
-const para1 = document.getElementById('text1');
-const para2 = document.getElementById('text2');
-const para3 = document.getElementById('text3');
-
-const changeStyle = (id) => (event) => {
+const changeStyle = (color) => (event) => {
   const param = event;
-  param.target.style.color = dataColors.next(id).value;
+  param.target.style.color = color.next().value;
 };
 
-para1.addEventListener('click', changeStyle(para1));
-para2.addEventListener('click', changeStyle(para2));
-para3.addEventListener('click', changeStyle(para3));
+const pFirst = document.getElementById('text1');
+const pSecond = document.getElementById('text2');
+const pThird = document.getElementById('text3');
+
+pFirst.addEventListener('click', changeStyle(dataColors));
+pSecond.addEventListener('click', changeStyle({ ...dataColors }));
+pThird.addEventListener('click', changeStyle({ ...dataColors }));
