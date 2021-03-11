@@ -97,26 +97,26 @@ console.log(replaceZero(array));
 
 console.log('Lesson-4'); // LESSON - 4
 
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-const para1 = document.getElementById('text1broke');
-const para2 = document.getElementById('text2broke');
-const para3 = document.getElementById('text3broke');
+// const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+// const para1 = document.getElementById('text1');
+// const para2 = document.getElementById('text2');
+// const para3 = document.getElementById('text3');
 
-function colorChange(parameter) {
-  let clicks = 0;
-  return function () {
-    clicks += 1;
-    const paragraph = parameter;
-    paragraph.style.color = colors[clicks - 1];
-    if (clicks > colors.length - 1) {
-      clicks = 0;
-    }
-  };
-}
+// function colorChange(parameter) {
+//   let clicks = 0;
+//   return function () {
+//     clicks += 1;
+//     const paragraph = parameter;
+//     paragraph.style.color = colors[clicks - 1];
+//     if (clicks > colors.length - 1) {
+//       clicks = 0;
+//     }
+//   };
+// }
 
-para1.addEventListener('click', colorChange(para1));
-para2.addEventListener('click', colorChange(para2));
-para3.addEventListener('click', colorChange(para3));
+// para1.addEventListener('click', colorChange(para1));
+// para2.addEventListener('click', colorChange(para2));
+// para3.addEventListener('click', colorChange(para3));
 
 console.log('Lesson-5'); // LESSON - 5
 
@@ -536,10 +536,13 @@ console.clear();
 console.log('Lesson-9'); // LESSON - 9
 
 const dataColors = {
+
   data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+
   [Symbol.iterator]() {
     return this;
   },
+
   next() {
     if (this.current === undefined) {
       this.current = 0;
@@ -551,10 +554,12 @@ const dataColors = {
         value: this.data[this.current++],
       };
     }
+
     if (this.current === this.data.length) {
       this.current = 0;
       return this.next();
     }
+
     return {
       done: true,
     };
@@ -566,10 +571,18 @@ const changeStyle = (color) => (event) => {
   param.target.style.color = color.next().value;
 };
 
-const pFirst = document.getElementById('text1');
-const pSecond = document.getElementById('text2');
-const pThird = document.getElementById('text3');
+function getElement(id) {
+  return document.getElementById(id);
+}
 
-pFirst.addEventListener('click', changeStyle(dataColors));
-pSecond.addEventListener('click', changeStyle({ ...dataColors }));
-pThird.addEventListener('click', changeStyle({ ...dataColors }));
+const pFirst = getElement('text1');
+const pSecond = getElement('text2');
+const pThird = getElement('text3');
+
+function addListener(element, eventType, func) {
+  element.addEventListener(eventType, func);
+}
+
+addListener(pFirst, 'click', changeStyle(dataColors));
+addListener(pSecond, 'click', changeStyle({ ...dataColors }));
+addListener(pThird, 'click', changeStyle({ ...dataColors }));
